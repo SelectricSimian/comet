@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>spring</string>
+	</array>
+	<key>name</key>
+	<string>SpringScript</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>symbols</string>
+			<key>match</key>
+			<string>:[a-zA-Z_][a-zA-Z_0-9]*</string>
+			<key>name</key>
+			<string>constant.other.symbol.springscript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>ordinary identifiers</string>
+			<key>match</key>
+			<string>[a-z][A-Z_][a-zA-Z_0-9]*</string>
+			<key>name</key>
+			<string>source.concord</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>numbers</string>
+			<key>match</key>
+			<string>[0-9]+(\.[0-9]*)?</string>
+			<key>name</key>
+			<string>constant.numeric.springscript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>strings</string>
+			<key>match</key>
+			<string>".*?"</string>
+			<key>name</key>
+			<string>string.quoted.double.springscript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>precedence arrow</string>
+			<key>match</key>
+			<string>&lt;-</string>
+			<key>name</key>
+			<string>keyword.source.springscript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>operators</string>
+			<key>match</key>
+			<string>[+\-*/=&lt;&gt;\^&amp;|?]+</string>
+			<key>name</key>
+			<string>keyword.source.springscript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>comments</string>
+			<key>match</key>
+			<string>~.*</string>
+			<key>name</key>
+			<string>comment.source.springscript</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.springscript</string>
+	<key>uuid</key>
+	<string>e2a1110c-b40a-48f0-a72d-96d672076a79</string>
+</dict>
+</plist>

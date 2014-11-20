@@ -1,0 +1,10 @@
+write "Beginning test --------------------------------"
+write "Hello, world!"
+write <- 1 + 1
+write <- 27 / 6
+def :one 1
+def :two 2
+write <- one + two
+write "Ending test -----------------------------------"
+
+write "wait, it's not over", write "but now it is"

@@ -1,0 +1,31 @@
+~ define a convenient list creation routine
+def :make_lst \blk {
+	def :result <- lst!
+	blk <- result :give
+	result
+}
+
+~ create a list
+def :my_lst <- make_lst [10, 20, 30, 40, 50]
+
+~ create a convenient list presentation routine
+def :show_lst \l {
+	l :each \val {
+		write val
+	}
+}
+
+write "old list:"
+show_lst my_lst
+
+~ a function to create a new list by taking every elemnt
+~  of an existing list `l` and performing an operation `f` to it.
+def :map \l \f {
+	def :result <- lst!
+	l :each \val { result :give <- f val }
+	result
+}
+
+~ create a new list by dividing every element of my_lst by 10
+write "new list:"
+show_lst <- map my_lst \n {n / 10}

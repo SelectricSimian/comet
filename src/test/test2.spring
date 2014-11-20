@@ -1,0 +1,61 @@
+def :test {
+	write "hello from test"
+}
+
+test!
+
+def :square \x { x * x }
+
+def :cube \x { x * x * x }
+
+def :hypercube \x { square <- square x }
+
+def :val 10
+
+write val
+write <- square val
+write <- cube val
+write <- hypercube val
+
+def :say_hello \times {
+	times > 0 :if {
+		write "hello!"
+		say_hello <- times - 1
+	}
+}
+
+write <- "Showing hello " .. (val :to_str!) .. " times."
+say_hello val
+
+def :pow \x \n {
+	n = 0 :if_else {
+		1
+	} {
+		x * <- pow x <- n - 1
+	}
+}
+
+def :exp2 <- pow 2
+
+write <- exp2 3
+write <- exp2 6
+write <- exp2 10
+
+def :person \name {
+	def :this <- obj!
+	
+	this :def :get_name { name }
+	this :def :set_name <- def :name
+	
+	this :def :say_hello {
+		write <- "Hello, my name is " .. name .. "!"
+	}
+	
+	this
+}
+
+def :william <- person "Silliam"
+def :sean <- person "Sean"
+
+william :say_hello!
+sean :say_hello!

@@ -1,0 +1,98 @@
+~~ example 1: various simple functions ~~
+
+def :add \a \b {a + b}
+
+write "\n    addition examples"
+write <- add 1 1 ~> 2
+write <- add 10 -5 ~> 5
+
+~ note: this only works for integer powers!
+def :pow \x \n {
+	n = 0 :if_else {
+		1
+	} {
+		n > 0 :if_else {
+			~ positive power, call recursively
+			x * <- pow x <- n - 1
+		} {
+			~ negative power, take reciprocal of positive power
+			1 / <- pow x <- -1 * n
+		}
+	}
+}
+
+write "\n    exponentation examples"
+write <- pow 10 5 ~> 100000
+write <- pow 3 -1 ~> 0.33333333
+
+~ create a function that generates a power of two
+def :power_of_two <- pow 2
+
+write "\n    power of two examples"
+write <- power_of_two 6 ~> 64
+write <- power_of_two -4 ~> 0.25
+
+~ create a function that repeats an operation a certain number of times
+def :loop \times \op {
+	def :i 0
+	while {i < times} {
+		op i
+		def :i <- i + 1
+	}
+}
+
+~ create a function that repeats something three times
+def :thrice <- loop 3
+
+write "\n   saying hello thrice"
+thrice {write "hello"}
+
+~~ example 2: list manipulation and capture blocks ~~
+
+~ a simple list
+def :cats <- lst!
+cats :give "Jake"
+cats :give "Julie"
+
+write "\n    Simple list examples"
+write cats ~> [Jake, Julie]
+write <- cats :length! ~> 2
+
+~ a simple "pipe" block
+def :pipe_planets_of_solar_system \receiver {
+	receiver "Mercury"
+	receiver "Venus"
+	receiver "Earth"
+	receiver "Mars"
+	receiver "Jupiter"
+	receiver "Saturn"
+	receiver "Uranus"
+	receiver "Neptune"
+	receiver "Pluto"
+}
+
+write "\n   piping `pipe_planets_of_solar_system` to write"
+pipe_planets_of_solar_system write ~> writes planets of solar system
+
+def :planets <- lst!
+pipe_planets_of_solar_system <- planets :give
+
+write "\n   piping `pipe_planets_of_solar_system` to a list's `:give` method"
+write planets ~> shows that `planets` is a list containing all of the planets
+
+~ wait, there's a shorter way!
+def :short_pipe_planets_of_solar_system [ ~ note the square brackets
+	"Mercury"
+	"Venus"
+	"Earth"
+	"Mars"
+	"Jupiter"
+	"Saturn"
+	"Uranus"
+	"Neptune"
+]
+
+~ or, if you like keeping things on one line...
+def :one_liner_pipe_planets ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+~ that's equivalent to the previous one, so we won't be needing it
+undef :one_liner_pipe_planets
