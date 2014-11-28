@@ -217,6 +217,13 @@ S_Function makeStr(string val) {
 	}
 	result.methods[equals_id] = new S_CompiledFunction(&equals);
 	
+	mixin(useId("length", true));
+	S_Function get_length(S_Function param) {
+		assert(isNull(param), "length takes no parameters!");
+		return makeNum(val.length);
+	}
+	result.methods[length_id] = new S_CompiledFunction(&get_length);
+	
 	mixin(useId("sub", true));
 	S_Function sub(S_Function[] params) {
 		size_t i = toIndex(val.length, params[0]);

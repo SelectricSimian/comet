@@ -79,6 +79,15 @@ S_Function makeImport() {
 	return new S_CompiledFunction(&result);
 }
 
+S_Function makeExit() {
+	import core.stdc.stdlib : exit;
+	S_Function result(S_Function param) {
+		exit(0);
+		assert(0);
+	}
+	return new S_CompiledFunction(&result);
+}
+
 S_Function makeTopEnv() {
 	S_DirectDefObj top = makeObj();
 	mixin(useId("write", true));
@@ -90,6 +99,7 @@ S_Function makeTopEnv() {
 	mixin(useId("while", true));
 	mixin(useId("loop", true));
 	mixin(useId("import", true));
+	mixin(useId("exit", true));
 	
 	top.methods[write_id] = makeWrite;
 	top.methods[read_id] = makeRead;
@@ -100,6 +110,7 @@ S_Function makeTopEnv() {
 	top.methods[while_id] = makeWhile;
 	top.methods[loop_id] = makeLoop;
 	top.methods[import_id] = makeImport;
+	top.methods[exit_id] = makeExit;
 	
 	mixin(useId("instantiate", true));
 	S_Function instantiate(S_Function param) {
