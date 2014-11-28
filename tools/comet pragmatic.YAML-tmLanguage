@@ -1,0 +1,58 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: Pragmatic Comet
+scopeName: comet.syntax_name
+fileTypes: ["comet"]
+uuid: 315352eb-bc2f-4622-b87e-b601cdb2c980
+
+patterns:
+  # - match: "[a-zA-Z_][a-zA-Z_0-9]*"
+  #   name: variable.comet
+  #   comment: ordinary identifiers
+  
+  - match: "(:|\\b)(def|undef|loop|while|if|if_else|each)\\b"
+    name: keyword.source.comet
+    comment: keywords
+  
+  - match: "(:|\\b)(write|read|is_defined|get_defs|to_str|length|give|sub|get|set)\\b"
+    name: support.function.comet
+    comment: built-in functions
+  
+  - match: "(:|\\b)(obj|lst|tbl|env)\\b"
+    name: storage.type.comet
+    comment: built in type constructors
+  
+  - match: "true|false"
+    name: support.constant.comet
+    comment: boolean constants
+
+  - match: ":[a-zA-Z_][a-zA-Z_0-9]*"
+    name: constant.other.symbol.comet
+    comment: symbols
+  
+  - match: "\\\\([a-zA-Z_][a-zA-Z_0-9]*)"
+    name: keyword.source.comet
+    comment: arguments
+    captures:
+      "1":
+        name: variable.parameter.function.comet
+  
+  - match: "\\b[0-9]+(\\.[0-9]*)?"
+    name: constant.numeric.comet
+    comment: numbers
+  
+  - match: "\".*?[^\\\\]\""
+    name: string.quoted.double.comet
+    comment: strings
+  
+  # - match: "<-"
+  #   name: keyword.source.comet
+  #   comment: precedence arrow
+  
+  - match: "[+\\-*/=<>\\^&|?!@]+"
+    name: keyword.source.comet
+    comment: operators and special characters
+  
+  - match: "~.*"
+    name: comment.source.comet
+    comment: comments

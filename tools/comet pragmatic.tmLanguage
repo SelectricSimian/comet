@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>comet</string>
+	</array>
+	<key>name</key>
+	<string>Pragmatic Comet</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>keywords</string>
+			<key>match</key>
+			<string>(:|\b)(def|undef|loop|while|if|if_else|each)\b</string>
+			<key>name</key>
+			<string>keyword.source.comet</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>built-in functions</string>
+			<key>match</key>
+			<string>(:|\b)(write|read|is_defined|get_defs|to_str|length|give|sub|get|set)\b</string>
+			<key>name</key>
+			<string>support.function.comet</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>built in type constructors</string>
+			<key>match</key>
+			<string>(:|\b)(obj|lst|tbl|env)\b</string>
+			<key>name</key>
+			<string>storage.type.comet</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>boolean constants</string>
+			<key>match</key>
+			<string>true|false</string>
+			<key>name</key>
+			<string>support.constant.comet</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>symbols</string>
+			<key>match</key>
+			<string>:[a-zA-Z_][a-zA-Z_0-9]*</string>
+			<key>name</key>
+			<string>constant.other.symbol.comet</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.function.comet</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>arguments</string>
+			<key>match</key>
+			<string>\\([a-zA-Z_][a-zA-Z_0-9]*)</string>
+			<key>name</key>
+			<string>keyword.source.comet</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>numbers</string>
+			<key>match</key>
+			<string>\b[0-9]+(\.[0-9]*)?</string>
+			<key>name</key>
+			<string>constant.numeric.comet</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>strings</string>
+			<key>match</key>
+			<string>".*?[^\\]"</string>
+			<key>name</key>
+			<string>string.quoted.double.comet</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>operators and special characters</string>
+			<key>match</key>
+			<string>[+\-*/=&lt;&gt;\^&amp;|?!@]+</string>
+			<key>name</key>
+			<string>keyword.source.comet</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>comments</string>
+			<key>match</key>
+			<string>~.*</string>
+			<key>name</key>
+			<string>comment.source.comet</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>comet.syntax_name</string>
+	<key>uuid</key>
+	<string>315352eb-bc2f-4622-b87e-b601cdb2c980</string>
+</dict>
+</plist>
