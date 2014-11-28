@@ -88,6 +88,24 @@ S_Function makeExit() {
 	return new S_CompiledFunction(&result);
 }
 
+import std.math : floor, ceil;
+
+S_Function makeFloor() {
+	S_Function result(S_Function param) {
+		num_type num = extract!num_type(param);
+		return makeNum(floor(num));
+	}
+	return new S_CompiledFunction(&result);
+}
+
+S_Function makeCeil() {
+	S_Function result(S_Function param) {
+		num_type num = extract!num_type(param);
+		return makeNum(ceil(num));
+	}
+	return new S_CompiledFunction(&result);
+}
+
 S_Function makeTopEnv() {
 	S_DirectDefObj top = makeObj();
 	mixin(useId("write", true));
@@ -100,6 +118,8 @@ S_Function makeTopEnv() {
 	mixin(useId("loop", true));
 	mixin(useId("import", true));
 	mixin(useId("exit", true));
+	mixin(useId("floor", true));
+	mixin(useId("ceil", true));
 	
 	top.methods[write_id] = makeWrite;
 	top.methods[read_id] = makeRead;
@@ -111,6 +131,8 @@ S_Function makeTopEnv() {
 	top.methods[loop_id] = makeLoop;
 	top.methods[import_id] = makeImport;
 	top.methods[exit_id] = makeExit;
+	top.methods[floor_id] = makeFloor;
+	top.methods[ceil_id] = makeCeil;
 	
 	mixin(useId("instantiate", true));
 	S_Function instantiate(S_Function param) {
