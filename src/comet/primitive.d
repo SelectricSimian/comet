@@ -189,13 +189,14 @@ S_Function makeNum(num_type val) {
 size_t toIndex(size_t length, S_Function param) {
 	num_type num = extract!num_type(param);
 	assert(isInt(num), "Index must be an integer!");
-	if (num > 0) {
-		assert(num < length, "Index not within bounds");
+	if (num >= 0) {
+		//assert(num < length, "Index not within bounds");
 		return cast(size_t)num;
 	}
 	else {
-		assert(num >= -length, "Index not within bounds");
-		return cast(size_t)(length + num);
+		//assert(num >= -length, "Index not within bounds");
+		//writeln(cast(long)num, ", ", cast(long)length, ", ", cast(long)length + cast(long)num);
+		return cast(size_t)(cast(long)length + cast(long)num);
 	}
 }
 
@@ -300,8 +301,8 @@ S_Function makeBool(bool b) {
 	}
 }
 
-S_Function makeLst(S_Function[] vals) {
-	size_t length = 0;
+S_DirectDefObj makeLst(S_Function[] vals) {
+	size_t length = vals.length;
 	
 	S_DirectDefObj result = makeObj();
 	
@@ -311,7 +312,7 @@ S_Function makeLst(S_Function[] vals) {
 		//if (i != cast(num_type)cast(int)i) {
 		//	throw new Exception("List index must be a non-negative integer!");
 		//}
-		return vals[toIndex(vals.length, param)];
+		return vals[toIndex(length, param)];
 	}
 	result.methods[get_id] = new S_CompiledFunction(&get);
 	
@@ -373,7 +374,7 @@ S_Function makeLst(S_Function[] vals) {
 	return result;
 }
 
-S_Function makeLst() {
+S_DirectDefObj makeLst() {
 	return makeLst([]);
 }
 

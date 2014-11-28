@@ -1,10 +1,10 @@
 module main;
 
 import std.stdio;
-import spring.exec;
-import spring.primitive;
-import spring.fn;
-import spring.id;
+import comet.exec;
+import comet.primitive;
+import comet.fn;
+import comet.id;
 
 // this creates an environment whose "instantiate" always returns the same result, so that variables can be used across commands in the interactive interpreter
 S_Function makeInteractiveEnv() {

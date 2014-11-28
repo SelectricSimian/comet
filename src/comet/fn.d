@@ -90,14 +90,15 @@ class S_InterpretedFunction : S_Function {
 		if (paramNameIdFn !is null) this_env.call(def_shadow_fn).call(paramNameIdFn).call(param);
 		
 		// call side-effect expressions
+		if (!code.length) return null;
 		foreach (i; 0 .. code.length - 1) {
 			code[i].interpret(this_env);
 		}
 		// call final return expression
-		if (code.length) return code[code.length - 1].interpret(this_env);
+		return code[code.length - 1].interpret(this_env);
 		
 		//return s_null_constant;
-		assert(0);
+		//assert(0);
 	}
 }
 

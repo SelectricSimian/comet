@@ -33,8 +33,11 @@ S_Function makeObjCtr() {
 
 S_Function makeLstCtr() {
 	S_Function result(S_Function param) {
-		assert(isNull(param), "lst takes no arguments!");
-		return makeLst();
+		//assert(isNull(param), "lst takes no arguments!");
+		mixin(useId("give", true));
+		S_DirectDefObj result = makeLst();
+		param.call(result.methods[give_id]);
+		return result;
 	}
 	return new S_CompiledFunction(&result);
 }
