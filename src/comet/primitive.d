@@ -287,6 +287,28 @@ S_Function makeBool(bool b) {
 		}
 		falseConst.methods[to_str_id] = new S_CompiledFunction(&toStrFalse);
 		
+		mixin(useId("&", true));
+		S_Function andTrue(S_Function param) {
+			return param;
+		}
+		trueConst.methods[and_id] = new S_CompiledFunction(&andTrue);
+		
+		S_Function andFalse(S_Function param) {
+			return falseConst;
+		}
+		falseConst.methods[and_id] = new S_CompiledFunction(&andFalse);
+		
+		mixin(useId("|", true));
+		S_Function orTrue(S_Function param) {
+			return trueConst;
+		}
+		trueConst.methods[or_id] = new S_CompiledFunction(&orTrue);
+		
+		S_Function orFalse(S_Function param) {
+			return param;
+		}
+		falseConst.methods[or_id] = new S_CompiledFunction(&orFalse);
+		
 		mixin(useId("not", true));
 		trueConst.methods[not_id] = falseConst;
 		falseConst.methods[not_id] = trueConst;
