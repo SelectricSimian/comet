@@ -1,8 +1,8 @@
-# Note for 2016:
+# Note:
 
 Comet was a personal exercise to see what it would be like to create a dynamically-typed scripting language in 48 hours.  It is no longer in development.
 
-I am now developing a new language, called Delta, which will be compiled, statically-typed, functionally-inspired, and which I hope will at some point be suitable for production use.  Delta is not yet published on Github, but a "teaser" website will be up soon.
+I am now developing a new language, called Delta, which will be compiled, statically-typed, functionally-inspired, and which I hope will at some point be suitable for production use.  Delta can be found at https://github.com/selectricsimian/delta.
 
 # Comet
 
